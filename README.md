@@ -44,3 +44,10 @@ assignToBucket(`pricing:${userId}`, 100);
 - `fnv1a32(input: string): number` — raw 32-bit FNV-1a hash, returned as an unsigned integer. Exported because it is occasionally useful to roll your own slicing.
 - `assignToBucket(subject: string, bucketCount: number): number` — integer in `[0, bucketCount)`.
 - `createBucketSplitter(bucketCount: number, assignments: Record<string, string[]>): { bucketOf, variantOf, variantForBucket }` — closes over a fixed bucket count and experiment definitions.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
