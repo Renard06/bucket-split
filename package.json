@@ -1,6 +1,6 @@
 {
   "name": "bucket-split",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Hashes subjects for stable A/B assignment.",
   "type": "module",
   "main": "src/index.js",
